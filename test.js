@@ -1,10 +1,10 @@
 var tape = require('tape')
-var nanobus = require('./')
+var nanopubsub = require('./')
 
-tape('nanobus', function (t) {
+tape('nanopubsub', function (t) {
   t.test('should assert input types', function (t) {
     t.plan(6)
-    var bus = nanobus()
+    var bus = nanopubsub()
     t.throws(bus.pub.bind(bus), /string/)
     t.throws(bus.pub.bind(bus, 'message', 123), /function/)
     t.throws(bus.sub.bind(bus), /string/)
@@ -15,7 +15,7 @@ tape('nanobus', function (t) {
 
   t.test('should emit messages', function (t) {
     t.plan(4)
-    var bus = nanobus()
+    var bus = nanopubsub()
     var obj = { bin: 'baz' }
     bus.sub('foo:bar', function (data, done) {
       t.equal(data, obj, 'data was same')
@@ -38,7 +38,7 @@ tape('nanobus', function (t) {
 
   t.test('should emit a flush event when all events are flushed', function (t) {
     t.plan(6)
-    var bus = nanobus()
+    var bus = nanopubsub()
     var i = 0
 
     bus.sub('beep:boop', function (data, done) {
@@ -66,7 +66,7 @@ tape('nanobus', function (t) {
 
   t.test('should emit a pub event when an event is published', function (t) {
     t.plan(2)
-    var bus = nanobus()
+    var bus = nanopubsub()
     var i = 0
     var j = 0
 

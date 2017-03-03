@@ -1,7 +1,7 @@
 {
-  "name": "nanobus",
+  "name": "nanopubsub",
   "description": "Tiny message bus",
-  "repository": "yoshuawuyts/nanobus",
+  "repository": "yoshuawuyts/nanopubsub",
   "version": "1.0.0",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --extra --no-dev",
